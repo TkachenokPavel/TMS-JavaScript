@@ -76,10 +76,10 @@
 
 //Task 7
 
-let userName = prompt('Как Вас зовут?', '');
-let userAge = prompt('Сколько вам лет', '');
+// let userName = prompt('Как Вас зовут?', '');
+// let userAge = prompt('Сколько вам лет', '');
 
-console.log(`Name: ${userName}, Age:${userAge}`);
+// console.log(`Name: ${userName}, Age:${userAge}`);
 
 
 // ADVANCED level
