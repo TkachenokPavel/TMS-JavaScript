@@ -98,3 +98,60 @@
 // let getChocolateSquare = (n, m) => {
 //     return !n || !m || n <= 0 || m <= 0 ? false : (n -1) + n * (m -1);
 // };
+
+
+// -----------Task 3
+
+let buyingPhones = () => {
+    let deposit = +prompt('Введите сумму Вашего депозита');
+    checkIsNumber(deposit, 'Введите сумму Вашего депозита');
+
+    let phonePrice = 0;
+    let priceWithTax = 0;
+    let totalPrice = 0;
+    let tax = 13 / 100;
+    let numberBying = 0;
+
+    function isPhonePrice() {
+        phonePrice = +prompt('На какую сумму Вы хотели бы купить телефон?', '');
+        checkIsNumber(phonePrice, 'Введите стоимость');
+        return phonePrice;
+    }
+
+    function calcPriceWithTax() {
+        let accessoriesPrice  = phonePrice * 0.1;
+        priceWithTax = phonePrice + accessoriesPrice + (tax * (accessoriesPrice + phonePrice));
+        return priceWithTax.toFixed(2);
+    }
+
+    function checkIsNumber(value, question) {
+        while (value == '' || value == null || isNaN(value)) {
+            value = +prompt(question);
+        }
+        return value;
+    }
+
+    while ( deposit > 0) {
+        isPhonePrice();
+        calcPriceWithTax();
+        alert(`Итоговая сумма покупки: ${calcPriceWithTax()} BYN`);
+
+        if (deposit < priceWithTax) {
+            alert('К сожалению, Вам не хватает средств.');
+            break;
+        } else {
+            deposit -= priceWithTax;
+        }
+        alert(`Остаток на депозите ${deposit} BYN`);
+        numberBying++;
+        totalPrice += priceWithTax;
+        if (confirm('Желаете приобрести что-то еще?')) {
+            continue;
+        } else break;
+    }
+
+    alert(`Вы приобрели ${numberBying} шт. товара, на итоговую сумму: ${totalPrice.toFixed(2)} BYN. Будем рады видеть Вас снова!`);
+};
+
+
+buyingPhones();
